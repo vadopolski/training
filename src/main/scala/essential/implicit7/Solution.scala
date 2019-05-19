@@ -28,15 +28,19 @@ object Eq {
 }
 
 object Solution extends App {
-  import EmailNameEqualImplicit._
 
   println("Test")
-  println(
-    Equal[Person].equal(
-      Person("Noel", "noel@example.com"),
-      Person("Alina", "alina@gmail.com")
+
+  def emailNameWithObject(): Unit = {
+    import EmailNameEqualImplicit._
+    println(
+      Equal[Person].equal(
+        Person("Noel", "noel@example.com"),
+        Person("Alina", "alina@gmail.com")
+      )
     )
-  )
+
+  }
 
   def emailNameEqual(): Unit = {
     import EmailNameEqualImplicit._
@@ -54,4 +58,5 @@ object Solution extends App {
 
   emailNameEqual()
   emailEqual()
+  emailNameWithObject()
 }
