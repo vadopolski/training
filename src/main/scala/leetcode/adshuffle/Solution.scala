@@ -21,6 +21,6 @@ object Solution {
   }
 
   def main(args: Array[String]): Unit = {
-    println(advantageCount(Array(12, 24, 8, 32), Array(13, 25, 32, 11)).toList)
+//    println(advantageCount(Array(12, 24, 8, 32), Array(13, 25, 32, 11)).toList)
   }
 }
