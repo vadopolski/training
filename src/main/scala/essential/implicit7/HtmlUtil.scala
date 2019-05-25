@@ -1,7 +1,5 @@
 package essential.implicit7
 
-case class Person(name: String, email: String)
-
 
 trait HtmlWriter[A] {
   def write(in: A): String
