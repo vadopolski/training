@@ -1,7 +1,4 @@
 package leetcode.questionPage
-import com.sun.tools.doclets.internal.toolkit.util.DocFinder.Input
-
-import scala.annotation.tailrec
 
 object Solution {
   def isMatch(s: String, p: String): Boolean = {

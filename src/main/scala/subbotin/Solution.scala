@@ -1,19 +1,25 @@
 package subbotin
 
+import scala.collection.mutable.ListBuffer
+
 object Solution {
 
+  def mergeSort(input: ListBuffer[Int]): ListBuffer[Int] = {
 
-  def mergeSort (input: List[Int]): List[Int] ={
-
-    input match {
-      case List(a, b) if a > b => List(b, a)
-      case List(a, b) if a < b => List(a, b)
-      case head :: tail => head :: mergeSort(tail)
+    def sort(a: Int, b: Int): Unit = b - a match {
+      case 1 if input(a) > input(b) =>
+        input(a) = input(a) + input(b)
+        input(b) = input(a) - input(b)
+        input(a) = input(a) - input(b)
+      case _ =>
     }
+
+    sort(0, input.length - 1)
+
+    input
   }
 
-
   def main(args: Array[String]): Unit = {
-    println(mergeSort(List(4,3,7)))
+    println(mergeSort(ListBuffer(4, 3)))
   }
 }
