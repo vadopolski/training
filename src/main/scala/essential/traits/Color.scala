@@ -4,6 +4,8 @@ sealed trait Color {
   def red: Int
   def green: Int
   def blue: Int
+  def isLight: Boolean = (red + green + blue) / 255 * 3 > 255 / 2
+  def isDark: Boolean = !isLight
 }
 
 object Red extends Color {
@@ -24,11 +26,4 @@ object Yellow extends Color {
   val blue: Int = 0
 }
 
-final case class CustomColor (red: Int,
-                              green: Int,
-                              blue: Int,
-                              isLight: Boolean) extends Color {
-
-
-
-}
+final case class CustomColor(red: Int, green: Int, blue: Int) extends Color

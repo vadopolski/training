@@ -36,8 +36,8 @@ object Draw {
     case Yellow => "Yellow"
     case Red => "Red"
     case Pink => "Pink"
-    case CustomColor(_, _, _, true) => "Light"
-    case CustomColor(_, _, _, false) => "Dark"
+    case _ if color.isLight => "Light"
+    case _ => "Dark"
   }
 
 
@@ -49,7 +49,7 @@ object Draw {
 
   def main(args: Array[String]): Unit = {
     Draw(Circle(10.0, Yellow))
-    Draw(Rectangle(10.0, 5.0, CustomColor(255, 255, 255, false)))
+    Draw(Rectangle(10.0, 5.0, CustomColor(255, 255, 255)))
     Draw(Square(10.0, Pink))
   }
 }
