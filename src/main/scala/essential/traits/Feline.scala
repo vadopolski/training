@@ -5,14 +5,13 @@ sealed trait Feline {
   def sound: String
 }
 
-case class Lion(colour: String,
-                sound: String = "Roar",
-                maneSize: Int) extends Feline
+final case class Lion(colour: String,
+                      sound: String = "Roar",
+                      maneSize: Int) extends Feline
 
-case class Pantera(colour: String,
-                   sound: String = "Roar") extends Feline
+final case class Pantera(colour: String,
+                         sound: String = "Roar") extends Feline
 
-case class Cat(colour: String,
-               sound: String = "Roar",
-               favouriteFood: String) extends Feline
-
+final case class Cat(colour: String,
+                     sound: String = "Roar",
+                     favouriteFood: String) extends Feline
