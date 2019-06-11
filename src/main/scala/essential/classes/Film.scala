@@ -17,3 +17,19 @@ final case class Film(name: String,
 
   def isDirectedBy(dir: Director): Boolean = dir == director
 }
+
+object Film {
+  def apply(name: String,
+            yearOfRelease: Int,
+            imdbRating: Double,
+            director: Director): Film =
+    new Film(name, yearOfRelease, imdbRating, director)
+
+  def highestRating(film1: Film, film2: Film): Film = {
+    if (film1.imdbRating > film2.imdbRating) film1 else film2
+  }
+
+  def oldestDirectorAtTheTime(film1: Film, film2: Film): Director = {
+    if(film1.director.yearOfBirth < film2.director.yearOfBirth) film1.director else film2.director
+  }
+}
