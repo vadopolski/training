@@ -1,29 +1,21 @@
 package essential.sequencing.generic_list
 
-//sealed trait Result[A]
-//case class Success[A](result: A) extends Result[A]
-//case class Failure[A](reason: String) extends Result[A]
+sealed trait Result[A]
+case class Success[A](result: A) extends Result[A]
+case class Failure[A](reason: String) extends Result[A]
 
 sealed trait LinkedList[A] {
+  def apply(i: Int): Result[A] = this match {
+    case Pair(h, _) if i == 0 => Success(h)
+    case Pair(_, t)           => t(i - 1)
+    case End()                => Failure("Index out of bounds")
+  }
 
-  def fold(end: Int, f: (Int, Int) => Int): Int =
-    this match {
-      case End() => end
-      case Pair(hd, tl) => f(hd, tl.fold(end, f))
 
-//  def apply(i: Int): Result[A] = this match {
-//    case Pair(h, _) if i == 0 => Success(h)
-//    case Pair(_, t)           => t(i - 1)
-//    case End()                => Failure("Index out of bounds")
-//  }
-
-//  def length: Int = fold(0, (_, x) => x + 1)
-  def length: Int = fold(0, (_, tl) => 1 + tl)
-//
-//  def length: Int = this match {
-//    case End()      => 0
-//    case Pair(_, t) => 1 + t.length
-//  }
+  def length: Int = this match {
+    case End()      => 0
+    case Pair(_, t) => 1 + t.length
+  }
 
 //  def contains(v: A): Boolean = this match {
 //    case End()                => false
@@ -32,11 +24,8 @@ sealed trait LinkedList[A] {
 //  }
 }
 
-//final case class End[A]() extends LinkedList[A]
-//final case class Pair[A](head: A, tail: LinkedList[A]) extends LinkedList[A]
-
-  case object End extends IntList
-  final case class Pair(head: Int, tail: IntList) extends IntList
+final case class End[A]() extends LinkedList[A]
+final case class Pair[A](head: A, tail: LinkedList[A]) extends LinkedList[A]
 
 object Solution {
   def main(args: Array[String]): Unit = {
