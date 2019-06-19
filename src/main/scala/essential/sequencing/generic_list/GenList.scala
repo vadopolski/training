@@ -11,16 +11,10 @@ sealed trait GenList {
       case GenPair(hd, tl) => f(hd, tl.fold(end, f))
     }
 
-//  def double: GenList =
-//    this match {
-//      case GenEnd => GenEnd
-//      case GenPair(hd, tl) => GenPair(hd * 2, tl.double)
-//    }
-
   def length: Int = fold[Int](0, (_, t) => t + 1)
   def sum: Int = fold[Int](0, (h, t) => h + t)
   def product: Int = fold[Int](1, (h, t) => h * t)
-  def double: GenList = fold[GenList](GenEnd, (h, t) =>  GenPair(h*2, t))
+  def double: GenList = fold[GenList](GenEnd, (h, t) => GenPair(h * 2, t))
 }
 
 object Solution2 {
