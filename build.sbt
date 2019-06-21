@@ -16,8 +16,13 @@ scalacOptions := Seq(
   "-Xexperimental"
 )
 
+val catsVersion       = "1.6.0"
+val catsEffectVersion = "1.1.0"
+
 libraryDependencies += "org.scalactic"  %% "scalactic"   % "3.0.5"
 libraryDependencies += "org.scalatest"  %% "scalatest"   % "3.0.5" % "test"
 libraryDependencies += "org.scalacheck" %% "scalacheck"  % "1.13.4" % "test"
 libraryDependencies += "org.mockito"    % "mockito-core" % "1.9.5" % "test"
 libraryDependencies += "commons-io" % "commons-io" % "2.6"
+libraryDependencies += "org.typelevel" %% "cats-core"   % catsVersion
+libraryDependencies += "org.typelevel" %% "cats-effect" % catsEffectVersion

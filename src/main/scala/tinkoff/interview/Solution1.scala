@@ -1,7 +1,5 @@
 package tinkoff.interview
 
-object Solution2 {
-
-
+class Solution1 {
 
 }

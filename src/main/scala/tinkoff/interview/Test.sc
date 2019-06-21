@@ -12,26 +12,22 @@ val d = Future { Thread.sleep(200); 5 }
 val list: Seq[Future[Int]] = Seq(a, b, c, d)
 
 // 0
-list.foldLeft((Seq[Future[Int]], Seq[Future[Int]])) {
-    (acc, el) => {
-//      el.onComplete
-      acc
-    }
-  }
-
+//list.foldLeft((Seq[Future[Int]], Seq[Future[Int]])) {
+//    (acc, el) => {
+////      el.onComplete
+//      acc
+//    }
+//  }
 
 var success: Seq[Future[Int]] = Seq()
 var failure: Seq[Future[Int]] = Seq()
 
-
-
- 1
-list.foreach(f => {
-    f.onComplete {
-      case Success(value)     => success = success :+ f
-      case Failure(exception) => failure = failure :+ f
+list.foreach(
+  f => f.onComplete {
+      case Success(v)     => success = success :+ f
+      case Failure(e)     => failure = failure :+ f
     }
-  })
+  )
 
 success
 failure

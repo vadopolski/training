@@ -6,7 +6,7 @@ import scala.concurrent.duration._
 
 object Robot extends IOApp {
 
-  def left(name: String, mvar: MVar[IO, Int], idx: Int = 0): IO[Nothing] =
+  def left(name: String, mvar: MVar[IO, Int], idx: Int = 0) =
     for {
       _ <- IO(println(s"step $name $idx"))
       _ <- mvar.put(idx)
@@ -18,7 +18,7 @@ object Robot extends IOApp {
             mvar: MVar[IO, Int],
             result: Ref[IO, List[String]],
             stop: MVar[IO, Unit],
-            idx: Int = 0): IO[Unit] =
+            idx: Int = 0) =
     for {
       _ <- IO(println(s"step $name $idx"))
       leftIdx <- mvar.take
@@ -28,7 +28,7 @@ object Robot extends IOApp {
       else right(name, mvar, result, stop, idx + 1)
     } yield res
 
-  val process: IO[Unit] = for {
+  val process = for {
     x <- MVar[IO].empty[Int]
     stop <- MVar[IO].empty[Unit]
     result <- Ref[IO].of(List.empty[String])
@@ -39,5 +39,5 @@ object Robot extends IOApp {
     _ <- IO(println(r.reverse.mkString(", ")))
   } yield ()
 
-  def run(args: List[String]): IO[ExitCode] = process as ExitCode.Success
+  def run(args: List[String]) = process as ExitCode.Success
 }
