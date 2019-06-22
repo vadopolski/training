@@ -1,10 +1,5 @@
 package scala_concurency.future
 
-import java.io._
-
-import org.apache.commons.io.FileUtils._
-
-import scala.collection.convert.decorateAsScala._
 import scala.concurrent.Future
 import scala.io.Source
 import scala.concurrent.ExecutionContext.Implicits.global
