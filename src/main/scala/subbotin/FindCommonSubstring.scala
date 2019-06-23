@@ -6,7 +6,6 @@ object FindCommonSubstring {
     case 2 if input.contains(substring) => substring
     case 2 => ""
     case in if in < substring.length => findCommonSubstring(substring, input)
-    case in if
   }
 
   def main(args: Array[String]): Unit = {
